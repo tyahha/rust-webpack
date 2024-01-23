@@ -1,6 +1,4 @@
 use wasm_bindgen::prelude::*;
-use web_sys::{CanvasRenderingContext2d, console};
-
 
 // When the `wee_alloc` feature is enabled, this uses `wee_alloc` as the global
 // allocator.
@@ -37,7 +35,7 @@ pub fn main_js() -> Result<(), JsValue> {
     Ok(())
 }
 
-fn draw_triangle(context: &CanvasRenderingContext2d, points: [(f64, f64); 3]) {
+fn draw_triangle(context: &web_sys::CanvasRenderingContext2d, points: [(f64, f64); 3]) {
     let [top, left , right] = points;
     context.move_to(top.0, top.1);
     context.begin_path();
