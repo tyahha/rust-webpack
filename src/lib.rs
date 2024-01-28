@@ -33,6 +33,8 @@ pub fn main_js() -> Result<(), JsValue> {
         .dyn_into::<web_sys::CanvasRenderingContext2d>()
         .unwrap();
 
+    let image = web_sys::HtmlImageElement::new().unwrap();
+    image.set_src("Idle (1).png");
     sierpinski(
         &context,
         [(300.0, 0.0), (0.0, 600.0), (600.0, 600.0)],
