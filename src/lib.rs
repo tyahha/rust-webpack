@@ -35,6 +35,11 @@ pub fn main_js() -> Result<(), JsValue> {
 
     let image = web_sys::HtmlImageElement::new().unwrap();
     image.set_src("Idle (1).png");
+    let callback = Closure::once(|| web_sys::console::log_1(&JsValue::from_str("onload")));
+    image.set_onload(Some(callback.as_ref().unchecked_ref()));
+    callback.forget();
+    context.draw_image_with_html_image_element(&image, 0.0, 0.0);
+
     sierpinski(
         &context,
         [(300.0, 0.0), (0.0, 600.0), (600.0, 600.0)],
